@@ -1,0 +1,30 @@
+{
+    "env": {
+        "node": true,
+        "es2022": true
+    },
+    "extends": [
+        "standard"
+    ],
+    "plugins": [],
+    "rules": {
+        "no-unused-vars": [
+            "warn",
+            {
+                "argsIgnorePattern": "next"
+            }
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "indent": [
+            "error",
+            2
+        ]
+    }
+}
