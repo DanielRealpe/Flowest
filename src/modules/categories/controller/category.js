@@ -2,7 +2,7 @@ import { categoryService } from "../service/category.js";
 import logger from "../../../utils/logger.js";
 
 class CategoryController {
-  async createCategory (req, res) {
+  async createCategory(req, res) {
     try {
       const category = await categoryService.createCategory(req.body);
       logger.info(`Categoría creada: ${category.nombre}`);
@@ -16,7 +16,7 @@ class CategoryController {
   async getAllCategories (req, res) {
     try {
       const categories = await categoryService.getAllCategories();
-      res.status(200).json(categories);
+      res.status(401).json(categories);
     } catch (error) {
       logger.error(`Error al obtener categorías: ${error.message}`);
       res.status(500).json({ error: error.message });
