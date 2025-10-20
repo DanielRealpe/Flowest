@@ -1,7 +1,7 @@
 import { categoryRepository } from "../repository/category.js";
 
 class CategoryService {
-  async createCategory(data) {
+  async createCategory (data) {
     // Validación: nombre requerido
     if (!data.nombre || typeof data.nombre !== "string") {
       throw new Error(
@@ -18,18 +18,18 @@ class CategoryService {
     return await categoryRepository.create(data);
   }
 
-  async getAllCategories() {
+  async getAllCategories () {
     return await categoryRepository.findAll();
   }
 
-  async getCategoryById(id) {
+  async getCategoryById (id) {
     if (!id) throw new Error("ID requerido.");
     const category = await categoryRepository.findById(id);
     if (!category) throw new Error("Categoría no encontrada.");
     return category;
   }
 
-  async updateCategory(data) {
+  async updateCategory (data) {
     if (!data.id) throw new Error("ID requerido.");
     if (data.nombre) {
       // Validación: nombre único
@@ -45,7 +45,7 @@ class CategoryService {
     return updated;
   }
 
-  async deleteCategory(id) {
+  async deleteCategory (id) {
     if (!id) throw new Error("ID requerido.");
     const deleted = await categoryRepository.delete(id);
     if (!deleted) throw new Error("Categoría no encontrada.");
