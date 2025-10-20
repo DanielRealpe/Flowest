@@ -2,7 +2,7 @@ import { categoryService } from "../service/category.js";
 import logger from "../../../utils/logger.js";
 
 class CategoryController {
-  async createCategory(req, res) {
+  async createCategory (req, res) {
     try {
       const category = await categoryService.createCategory(req.body);
       logger.info(`Categoría creada: ${category.nombre}`);
@@ -13,7 +13,7 @@ class CategoryController {
     }
   }
 
-  async getAllCategories(req, res) {
+  async getAllCategories (req, res) {
     try {
       const categories = await categoryService.getAllCategories();
       res.status(200).json(categories);
@@ -23,7 +23,7 @@ class CategoryController {
     }
   }
 
-  async getCategoryById(req, res) {
+  async getCategoryById (req, res) {
     try {
       const category = await categoryService.getCategoryById(req.params.id);
       res.status(200).json(category);
@@ -33,7 +33,7 @@ class CategoryController {
     }
   }
 
-  async updateCategory(req, res) {
+  async updateCategory (req, res) {
     try {
       const category = await categoryService.updateCategory(
         req.params.id,
@@ -47,7 +47,7 @@ class CategoryController {
     }
   }
 
-  async deleteCategory(req, res) {
+  async deleteCategory (req, res) {
     try {
       await categoryService.deleteCategory(req.params.id);
       logger.info(`Categoría eliminada: ID ${req.params.id}`);
