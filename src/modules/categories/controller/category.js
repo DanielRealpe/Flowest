@@ -60,4 +60,4 @@ class CategoryController {
 }
 
 const categoryController = new CategoryController();
-export default categoryController;
+export { categoryController };
