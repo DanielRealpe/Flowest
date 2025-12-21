@@ -1,0 +1,67 @@
+version: "3.8"  
+# Especifica la versión de Docker Compose a usar.
+
+services:  
+  # Define los servicios (contenedores) que se van a levantar.
+
+  db:  
+    # Nombre del servicio para la base de datos MySQL.
+
+    image: mysql:8.0  
+    # Usa la imagen oficial de MySQL versión 8.0.
+
+    container_name: flowest-mysql  
+    # Nombre personalizado para el contenedor.
+
+    restart: always  
+    # Hace que el contenedor se reinicie automáticamente si falla.
+
+    environment:  
+      MYSQL_ROOT_PASSWORD: root  
+      # Contraseña del usuario root de MySQL.
+      MYSQL_DATABASE: flowest  
+      # Nombre de la base de datos que se creará al iniciar el contenedor.
+      # MYSQL_USER: root  
+      # Usuario adicional (en este caso, también root).
+      # MYSQL_PASSWORD:   
+      # Contraseña para el usuario adicional (vacía aquí).
+
+    ports:  
+      - "3306:3306"  
+      # Expone el puerto 3306 del contenedor al 3306 de tu máquina.
+
+    volumes:  
+      - db_data:/var/lib/mysql  
+      # Monta un volumen persistente para guardar los datos de MySQL.
+
+  phpmyadmin:  
+    # Servicio para la interfaz web de administración de MySQL.
+
+    image: phpmyadmin/phpmyadmin  
+    # Usa la imagen oficial de phpMyAdmin.
+
+    container_name: flowest-phpmyadmin  
+    # Nombre personalizado para el contenedor.
+
+    restart: always  
+    # Reinicia el contenedor automáticamente si falla.
+
+    environment:  
+      PMA_HOST: db  
+      # Indica a phpMyAdmin que el host de la base de datos es el servicio 'db'.
+      PMA_USER: root  
+      # Usuario para conectarse a MySQL.
+      PMA_PASSWORD: root
+      # Contraseña para conectarse a MySQL (vacía aquí).
+
+    ports:  
+      - "8080:80"  
+      # Expone el puerto 80 del contenedor como 8080 en tu máquina.
+
+    depends_on:  
+      - db  
+      # Hace que este servicio espere a que el servicio 'db' esté listo antes de arrancar.
+
+volumes:  
+  db_data:  
+  # Define un volumen llamado 'db_data' para persistir los datos de la base de datos.
