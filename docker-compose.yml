@@ -1,4 +1,4 @@
-version: "3.8"  
+# version: "3.8"  
 # Especifica la versión de Docker Compose a usar.
 
 services:  

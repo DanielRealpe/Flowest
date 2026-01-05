@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
+import env from "../config/env.js";
 
-const SECRET = process.env.JWT_SECRET || "tu_secreto_por_defecto";
+const SECRET = env.jwt.secret;
 
 export function authenticateToken (req, res, next) {
   const authHeader = req.headers.authorization;

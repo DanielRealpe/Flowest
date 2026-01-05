@@ -1,4 +1,4 @@
-import { Role } from '../models/Role';
+import Role from '../model/roles.js';
 
 class RoleRepository {
     async create(data) {
@@ -27,4 +27,5 @@ class RoleRepository {
     }
 };
 
-module.exports = RoleRepository;
+const roleRepository = new RoleRepository();
+export { roleRepository };

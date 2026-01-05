@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import { define } from '../../../config/database'; // Ajusta la ruta según tu configuración
+import sequelize from '../../../config/db.js'; // Ajusta la ruta según tu configuración
 
-const Role = define('Role', {
+const Role = sequelize.define('Role', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -14,7 +14,7 @@ const Role = define('Role', {
     }
 }, {
     tableName: 'roles',
-    timestamps: true
+    timestamps: false
 });
 
 export default Role;

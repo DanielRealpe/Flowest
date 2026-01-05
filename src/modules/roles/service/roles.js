@@ -1,25 +1,26 @@
-import { RoleRepository } from '../repository/roles';
+import { roleRepository } from "../repository/roles.js";
 
-const RoleService = {
-    async createRole(data) {
-        return await RoleRepository.create(data);
-    },
+class RoleService {
+  async createRole(data) {
+    return await roleRepository.create(data);
+  }
 
-    async getAllRoles() {
-        return await RoleRepository.findAll();
-    },
+  async getAllRoles() {
+    return await roleRepository.findAll();
+  }
 
-    async getRoleById(id) {
-        return await RoleRepository.findById(id);
-    },
+  async getRoleById(id) {
+    return await roleRepository.findById(id);
+  }
 
-    async updateRole(id, data) {
-        return await RoleRepository.update(id, data);
-    },
+  async updateRole(id, data) {
+    return await roleRepository.update(id, data);
+  }
 
-    async deleteRole(id) {
-        return await RoleRepository.delete(id);
-    }
-};
+  async deleteRole(id) {
+    return await roleRepository.delete(id);
+  }
+}
 
-module.exports = RoleService;
+const roleService = new RoleService();
+export { roleService };
