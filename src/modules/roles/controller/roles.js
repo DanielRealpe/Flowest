@@ -2,7 +2,7 @@ import { roleService } from "../service/roles.js";
 import logger from "../../../utils/logger.js";
 
 class RoleController {
-  async createRole(req, res) {
+  async createRole (req, res) {
     try {
       const role = await roleService.createRole(req.body);
       logger.info(`Rol creado: ${role.nombre}`);
@@ -13,7 +13,7 @@ class RoleController {
     }
   }
 
-  async getAllRoles(req, res) {
+  async getAllRoles (req, res) {
     try {
       const roles = await roleService.getAllRoles();
       res.status(200).json(roles);
@@ -23,7 +23,7 @@ class RoleController {
     }
   }
 
-  async getRoleById(req, res) {
+  async getRoleById (req, res) {
     try {
       const role = await roleService.getRoleById(req.params.id);
       if (!role) {
@@ -37,7 +37,7 @@ class RoleController {
     }
   }
 
-  async updateRole(req, res) {
+  async updateRole (req, res) {
     try {
       const role = await roleService.updateRole(req.params.id, req.body);
       if (!role) {
@@ -52,7 +52,7 @@ class RoleController {
     }
   }
 
-  async deleteRole(req, res) {
+  async deleteRole (req, res) {
     try {
       const deleted = await roleService.deleteRole(req.params.id);
       if (!deleted) {

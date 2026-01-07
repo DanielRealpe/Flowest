@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import env from "../config/env.js";
+import { rolePermissionService } from "../modules/rolePermission/service/rolePermission.js";
 
 const SECRET = env.jwt.secret;
 
@@ -16,4 +17,22 @@ export function authenticateToken (req, res, next) {
     req.user = user;
     next();
   });
+}
+
+export function verifyPermission (requiredPermission) {
+  // authenticateToken;
+  return async (req, res, next) => {
+    const userRoleId = req.user.role;
+    try {
+      const rolePermissions = await rolePermissionService.getPermissionsByRole(userRoleId);
+      const userPermissions = rolePermissions.map(rp => rp.name);
+      if (!userPermissions.includes(requiredPermission)) {
+        return res.status(403).json({ message: "Permiso denegado" });
+      }
+    } catch (error) {
+      return res.status(500).json({ message: "Error al verificar permisos" });
+    }
+
+    next();
+  };
 }

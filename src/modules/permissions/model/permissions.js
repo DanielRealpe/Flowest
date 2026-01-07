@@ -8,17 +8,17 @@ const Permission = sequelize.define(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      unique: true,
+      unique: true
     },
     code: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
-    },
+      unique: true
+    }
   },
   {
     tableName: "permisos",
-    timestamps: false,
+    timestamps: false
   }
 );
 

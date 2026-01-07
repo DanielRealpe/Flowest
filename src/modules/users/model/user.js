@@ -8,43 +8,43 @@ const User = sequelize.define(
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true,
+      primaryKey: true
     },
     nombre: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: false
     },
     cedula: {
       type: DataTypes.STRING(20),
       allowNull: false,
-      unique: true,
+      unique: true
     },
     correo: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      unique: true,
+      unique: true
     },
     celular: {
       type: DataTypes.STRING(15),
       allowNull: false,
-      unique: true,
+      unique: true
     },
     contrasena: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: false
     },
     roleId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: Role,
-        key: "id",
-      },
-    },
+        key: "id"
+      }
+    }
   },
   {
     tableName: "usuarios",
-    timestamps: false,
+    timestamps: false
   }
 );
 

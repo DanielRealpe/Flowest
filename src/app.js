@@ -4,6 +4,7 @@ import morgan from "morgan";
 import categoryRoutes from "./modules/categories/router/category.js";
 import roleRoutes from "./modules/roles/router/roles.js";
 import userRoutes from "./modules/users/router/user.js";
+import rolePermissionRoutes from "./modules/rolePermission/router/rolePermission.js";
 // import userRoutes from "./routes/user.routes.js";
 
 const app = express();
@@ -19,5 +20,6 @@ const mainRoute = "/api/v1";
 app.use(mainRoute + "/categories", categoryRoutes);
 app.use(mainRoute + "/roles", roleRoutes);
 app.use(mainRoute + "/users", userRoutes);
+app.use(mainRoute + "/rolePermission", rolePermissionRoutes);
 
 export default app;
