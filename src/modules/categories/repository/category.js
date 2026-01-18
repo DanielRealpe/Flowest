@@ -27,5 +27,4 @@ class CategoryRepository {
   }
 }
 
-const categoryRepository = new CategoryRepository();
-export { categoryRepository };
+export const categoryRepository = new CategoryRepository();

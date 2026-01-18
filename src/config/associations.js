@@ -2,6 +2,8 @@ import User from "../modules/users/model/user";
 import Role from "../modules/roles/model/roles";
 import Permission from "../modules/permissions/model/permission";
 import RolePermission from "../modules/rolePermission/model/rolePermission";
+import Product from "../modules/products/model/product";
+import Category from "../modules/categories/model/category";
 
 // Define associations between User and Role
 Role.hasMany(User, { foreignKey: "roleId" });
@@ -18,3 +20,7 @@ Permission.belongsToMany(Role, {
   foreignKey: "permissionId",
   otherKey: "roleId"
 });
+
+// Define associations between Product and Category
+Product.belongsTo(Category, { foreignKey: "categoryId" });
+Category.hasMany(Product, { foreignKey: "categoryId" });
